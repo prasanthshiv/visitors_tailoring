@@ -18,13 +18,14 @@ analytical reports and take strategical decisions
      """,
     'author': 'Netex Solutions Pvt. Ltd.',
     'website': 'http://www.netexsolutions.com',
-    'depends': ['sale','project'],
+    'depends': ['sale','project','hr'],
     'data': [
              'data/measurement_seq.xml',
              'views/measurement_master_view.xml',
              'views/res_partner_views.xml',
              'views/sale_order_view.xml',
-             'views/design_master_view.xml'
+             'views/design_master_view.xml',
+             'views/employee_profile.xml',
     ],
     'auto_install': False,
     'installable': True,

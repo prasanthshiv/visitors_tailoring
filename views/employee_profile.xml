@@ -1,0 +1,134 @@
+<odoo>
+    <data>
+        <record id="view_employee_form_inherited" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='personal_information']" position="replace"></xpath>
+                <xpath expr="//page[@name='public']" position="replace"></xpath>
+                <xpath expr="//page[@name='hr_settings']" position="before">
+                    <page string="Personal Information">
+                        <group>
+                            <group string="PERSONAL DETAILS">
+                                <field name="code"/>
+                                <field name="gender"/>
+                                <field name="country_id" options='{"no_open": True, "no_create": True}'/>
+                                <field name="work_phone"/>
+                                <field name="work_email"/>
+                                <field name="birthday"/>
+                                <field name="place_of_birth"/>
+                                <field name="languages"/>
+                                <field name="vehicle_number"/>
+                            </group>
+                            <group string="PASSPORT DETAILS">
+                                <field name="passport_id"/>
+                                <field name="passport_issue_date"/>
+                                <field name="passport_expiry"/>
+                                <field name="passport_status"/>
+                            </group>
+                            <group string="LICENSE DETAILS">
+                                <field name="driving_license"/>
+                                <field name="license_no" attrs="{'invisible':[('driving_license', '!=', 'yes')]}"/>
+                                <field name="l_issue_date" attrs="{'invisible':[('driving_license', '!=', 'yes')]}"/>
+                                <field name="l_expiry_date" attrs="{'invisible':[('driving_license', '!=', 'yes')]}"/>
+                            </group>
+                            <group string="WORK DETAILS">
+                                <field name="department_id"/>
+                                <field name="job_id"/>
+                                <field name="date_join"/>
+                                <field name="visa_under"/>
+                                <field name="visa_type_id"/>
+                                <field name="work_location_id"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Employment">
+                        <group colspan="4" col="4">
+                            <field name="cv" filename="cv_name"/>
+                            <field name="offer_letter" filename="offer_letter_name"/>
+                            <field name="mol_doc" filename="mol_doc_name"/>
+                            <field name="induction_doc" filename="induction_doc_name"/>
+                            <field name="labor_contract" filename="labor_contract_name"/>
+                            <field name="timesheet_type_id"/>
+                            <field name="contrac_type"/>
+                            <field name="accommodation_id"/>
+                            <field name="travel_id"/>
+                        </group>
+                    </page>
+                    <page string="EID &amp; Insurance">
+                        <group>
+                            <group string="EID Details">
+                                <field name="eid_no"/>
+                                <field name="eid_expairy"/>
+                                <field name="eid_cd" filename="eid_card"/>
+                            </group>
+                            <group string="Insurance Details">
+                                <field name="insurance_no"/>
+                                <field name="insurance_type_id"/>
+                                <field name="insurance_expairy"/>
+                                <field name="insurance_cd" filename="insurance_card"/>
+                            </group>
+                            <group  string="Labour Card Details">
+                                <field name="labour_card_no"/>
+                                <field name="lab_no"/>
+                                <field name="labour_card_expairy"/>
+                                <field name="lab_cd" filename="lab_card"/>
+                            </group>
+                            <group  string="VISA Details">
+                                <field name="visa" filename="visa_name"/>
+                                <field name="visa_issue_date"/>
+                                <field name="visa_expiry"/>
+                                <field name="visa_designation"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Misc. Documents">
+                        <group colspan="4" col="2">
+                            <field name="doc_ids" nolabel="1">
+                                <tree>
+                                    <field name="name" required="1"/>
+                                    <field name="document" filename="document_name"/>
+                                    <field name="document_name" invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group col="4">
+                                        <field name="name" required="1"/>
+                                        <field name="document" filename="document_name"/>
+                                        <field name="document_name" invisible="1"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Public Info">
+                        <group>
+                            <group string="Contact Information">
+                                <field name="identification_id"/>
+                                <field name="address_home_id"/>
+                                <field name="address_id"/>
+                            </group>
+                            <group string="Position">
+                                <field name="manager"/>
+                            </group>
+                            <field name="notes" placeholder="Other Information ..." colspan="4"/>
+                        </group>   
+                    </page>
+                <xpath expr="//page[@name='hr_settings']" position="inside">
+                    <field name="total_commission"/>
+                </xpath>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="unique_name" model="ir.cron">
+            <field name="name">Name </field>
+            <field name="active" eval="True" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="model" eval="'cron.job'"/>
+            <field name="function" eval="'method_name'"/>
+        </record>
+    </data>
+</odoo>
