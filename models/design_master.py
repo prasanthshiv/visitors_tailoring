@@ -12,4 +12,4 @@ class DesgnDesgn(models.Model):
                             ('pocket','pocket'),
                             ('addons','Addons')
                             ], string="Design Type")
- 
+
