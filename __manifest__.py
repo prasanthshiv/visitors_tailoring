@@ -26,6 +26,8 @@ analytical reports and take strategical decisions
              'views/sale_order_view.xml',
              'views/design_master_view.xml',
              'views/employee_profile.xml',
+             'views/designstyle.xml',
+             'views/addons.xml',
     ],
     'auto_install': False,
     'installable': True,

@@ -1,0 +1,9 @@
+<odoo>
+    <record id="seq_customer" model="ir.sequence">
+        <field name="name">sequence number</field>
+        <field name="code">design.style</field>
+        <field name="prefix">CUST/</field>
+        <field name="padding">5</field>
+    </record>
+
+</odoo>

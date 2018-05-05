@@ -7,3 +7,6 @@ from . import sale_order
 from . import design_master
 from . import employee_profile
 from . import name_change
+from . import designstyle
+from . import addons
+

@@ -1,0 +1,96 @@
+<odoo>
+    
+     <record id="tailor_managment_tree" model="ir.ui.view">
+            <field name="name">desighn style tree</field>
+            <field name="model">design.style</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_id"/>
+                    <field name="measurements"/>
+                    <field name="date"/>
+                    
+                </tree>
+            </field>
+        </record>
+     
+    <record id="view_form_design_style" model="ir.ui.view">
+         <field name="name">view.form.design.style</field>
+         <field name="model">design.style</field>
+         <field name="arch" type="xml">
+             <form string="Desings">
+                  <field name="name"/>
+		              <group colspan="2">
+		                  <group>
+		                      <field name="partner_id"/>
+			                  <field name="measurements"/>
+			                  <field name="date" />
+			                  <field name="ref" invisible="1"/>
+		                  </group>
+		              </group>
+	                  <notebook>
+		                    <page string="Style">
+		                       <group>
+		                           <div>
+			                           <label style="margin-left:30px; font-weight:bold;"  for="neck"  string="Neck" />
+			                           <field style="margin-left:108px; width:60%" name="neck" options="{'no_create': True}"   />
+			                           <field  style="margin-left:250px;" name="neck_img" widget="image" width="150" height="150"/>
+		                           </div>
+		                           <div>
+			                           <label style="margin-left:30px; font-weight:bold;" for="collar" string="Collar       "/>
+			                           <field style="margin-left:100px; width:60%"  name="collar" options="{'no_create': True}"  />
+			                           <field style="margin-left:250px;" name="collar_img" widget="image" width="150" height="150"/>
+		                           </div>
+		                       </group>
+		                       <group>
+		                           <div>
+				                         <label style="margin-left:30px; font-weight:bold;" for="caf" string="Caf        "/>
+				                         <field style="margin-left:117px; width:60%" name="caf" options="{'no_create': True}" />
+				                         <field  style="margin-left:250px;" name="caf_img" widget="image" width="150" height="150"/>
+		                           </div>
+		                           <div>
+				                         <label style="margin-left:30px; font-weight:bold;" for="pocket" string="Pocket        "/>
+				                         <field style="margin-left:96px; width:60%"  name="pocket" options="{'no_cre0te': True}" />
+				                         <field style="margin-left:250px;" name="pocket_img" widget="image" width="150" height="150"/>
+		                           </div>
+		                       </group>
+		                    </page>
+		                    <page string="Material">
+		                        <field name="style_c">
+			                         <tree editable="bottom">
+			                            <field name="unit_qty"/>
+			                            <field name="products"/>
+			                            <field name="uom"/>
+			                        </tree>
+		                        </field>
+		                    </page>
+		                    <page string="Extra addons" attrs="{'invisible':[('ref','!=',True)]}">
+		                       <field name="extra_add" >
+                                     <tree editable="bottom">
+                                         <field name="addons"/>
+		                               <field name="quantity"/>
+		                           </tree>
+		                       </field>
+		                        
+		                    </page>
+	                  </notebook>     
+                                      
+             </form>
+         </field>
+     </record>      
+    
+  <record model="ir.actions.act_window" id="designingstyle">
+                <field name="name">Designs</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">design.style</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+            </record>
+        
+            
+         <menuitem name="Designs"
+            id="sub_menu_design_style"
+            parent="menu_project_management_customer_measurment"
+            action="designingstyle"
+            sequence="10"/>
+          
+</odoo>

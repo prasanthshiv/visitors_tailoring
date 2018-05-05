@@ -6,7 +6,7 @@
             web_icon="project,static/description/icon.png"
             sequence="50"/>
     
-        <menuitem name="Measurement Details"
+        <menuitem name="Stitching Details"
             id="menu_project_management_customer_measurment"
             parent="project.menu_main_pm"
             sequence="10"/>
@@ -18,6 +18,8 @@
                 <field name="arch" type="xml">
                     <form string="Measurement" version="10.0">
                         <sheet>
+                            <button style="margin-left:700px" name="action_view" type="object" class="oe_stat_button" icon="fa-star"
+                             widget="statinfo" string="project"/>
                             <div class="oe_button_box" name="button_box">
 	                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
 	                                    class="oe_stat_button" icon="fa-archive">
@@ -34,7 +36,7 @@
                                 </h4>
                             </div>
                             <newline/>
-                            <field name="date" readonly="1"/>
+                            <field name="date"/>
                             <group>
                                   <newline/>
                                   <field name="phone_number"/>
@@ -96,14 +98,38 @@
 		            </search>
 		        </field>
 		    </record>
-            
+		    
+		    <record model="ir.ui.view" id="view_kanban">
+	            <field name="name">measurement.measurement.kanban</field>
+	            <field name="model">measurement.measurement</field>
+	            <field name="arch" type="xml">
+						          <kanban>
+						             <templates>
+						                <t t-name="kanban-box">
+						                    <div class="oe_resource_vignette">
+						                        <div class="oe_resource_image">
+						                            <a type="edit"><img t-att-src="kanban_image('object.name', 'photo', record.id.value)" class="oe_resource_picture"/></a>
+						                        </div>
+						                        <div class="oe_resource_details">
+						                            <ul>
+						<!--Here you have to write the object's field name which you want to display in kanban view -->
+						                               <li><field name="number"/></li>
+				    	                             </ul>
+						                        </div>
+						                    </div>                       
+						                </t>
+						            </templates>
+						        </kanban>
+						    </field>
+						</record>
+							            
             
             <record model="ir.actions.act_window" id="action_customer_measurment">
 		        <field name="name">Measurements</field>
 		        <field name="type">ir.actions.act_window</field>
 		        <field name="res_model">measurement.measurement</field>
 		        <field name="view_type">form</field>
-		        <field name="view_mode">tree,form</field>
+		        <field name="view_mode">kanban,form</field>
             </record>
             
             <record id="action_view_customer_measurment" model="ir.actions.act_window">

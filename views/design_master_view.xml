@@ -8,7 +8,7 @@
          <field name="arch" type="xml">
              <tree string="Desings">
                  <field name="name"/>
-                 <field name="image"/>
+                 <field name="image" />
                  <field name="type"/>
              </tree>
          </field>
@@ -21,8 +21,9 @@
              <form string="Desings">
                  <group colspan="2" col="6">
                  <field name="name"/>
-                 <field name="image"/>
+                 <field name="image" widget="image"/>
                  <field name="type"/>
+                 
                  </group>
              </form>
          </field>
@@ -38,7 +39,7 @@
             </record>
         
             
-         <menuitem name="Desigs"
+         <menuitem name="Designs category"
             id="main_menu_desgn_master"
             parent="project.menu_project_config"
             action="action_customer_desgn"
