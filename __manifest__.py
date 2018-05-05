@@ -24,7 +24,9 @@ analytical reports and take strategical decisions
              'views/measurement_master_view.xml',
              'views/res_partner_views.xml',
              'views/sale_order_view.xml',
-             'views/design_master_view.xml'
+             'views/design_master_view.xml',
+             'views/designstyle.xml',
+             'views/addons.xml',
     ],
     'auto_install': False,
     'installable': True,

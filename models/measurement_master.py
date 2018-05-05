@@ -43,3 +43,31 @@ class MeasurementMeasurement(models.Model):
         if res:
             res.number = self.env['ir.sequence'].get('measurement.measurement')
         return res
+    def action_view(self):
+        view_id = self.env.ref('project.edit_project')
+        print view_id.type
+        
+        context = self._context.copy()
+#        return {
+#            'name':'Projects',
+#            'view_type':'form',
+#            'view_mode':'tree',
+#            'view_id':view_id,
+#
+#            'views' : [(view_id,'form')],
+#            'type':'ir.action.act_window',
+#            'target':'current',
+#            'res_id':self.id,
+#            'context': context,
+#            'res_model':' action.res_model'
+#         }
+        return {
+                    'name': view_id.name,
+                    'type': 'ir.actions.act_window',
+                    'view_type': view_id.type,
+                    'view_mode': 'tree,form',
+                    'target': 'current',
+                    'context': context,
+                    'res_model':'project.project',
+        
+        }
