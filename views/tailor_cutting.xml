@@ -1,0 +1,61 @@
+<odoo>
+
+   
+     <!--    <record id="tailor_cutting_tree" model="ir.ui.view">
+            <field name="name">cutting tree</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product"/>
+                    
+                </tree>
+            </field>
+        </record> -->
+        
+          
+          
+         
+      
+        <record id="tailor_cutting_form" model="ir.ui.view">
+            <field name="name">Tailor Cutting</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/form/*" position="inside">
+      
+           <button string="Finish" type="object" name="cutting_finish" class="oe_highlight" attrs="{'invisible': [('bool_field', '=', True)]}">
+           	<field name="bool_field" invisible="1"/>
+           </button>
+           
+          </xpath>
+                <xpath expr="//page[1]" position="after">
+	                        <page name="cutting product" string="Cutting Product">
+	                            <field name="product_cutting">
+	                                <tree editable="bottom">
+			                            <field name="products"/>
+			                        	<field name="unit_qty"/>
+			                        	<field name="uom"/>
+		                        	</tree>
+		                        </field>
+	                        	
+	                        </page>
+	                    </xpath>
+                          
+                    
+          </field>
+       
+        </record>
+
+        <record id="tailor_cutting_action" model="ir.actions.act_window">
+            <field name="name">Tailor cutting</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+       
+       <menuitem name="Cutting" id="cutting_view" parent="project.menu_project_management" action="tailor_cutting_action" />  
+
+
+
+
+</odoo>

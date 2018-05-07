@@ -28,6 +28,7 @@ analytical reports and take strategical decisions
              'views/employee_profile.xml',
              'views/designstyle.xml',
              'views/addons.xml',
+             'views/tailor_cutting.xml',
     ],
     'auto_install': False,
     'installable': True,
