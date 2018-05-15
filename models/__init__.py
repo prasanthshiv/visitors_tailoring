@@ -10,4 +10,5 @@ from . import name_change
 from . import designstyle
 from . import addons
 from . import cutting
+from . import project
 
